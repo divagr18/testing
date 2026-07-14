@@ -3,3 +3,7 @@
 A deliberately small dependency-free repository used to exercise Pull Guard's
 webhook ingestion, deterministic clustering, isolated runner, and evidence
 paths. Each pull request is independent and should remain open for triage.
+
+## Local check
+
+Run `python -m unittest discover -s tests -v` from the repository root.
