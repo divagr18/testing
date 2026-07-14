@@ -4,6 +4,7 @@ from src.retry import retry_once
 
 
 class RetryTests(unittest.TestCase):
+    # Keeping this fixture explicit makes the synchronize webhook scenario reproducible.
     def test_returns_the_operation_value(self):
         self.assertEqual(retry_once(lambda: "ok"), "ok")
 
