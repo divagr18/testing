@@ -19,3 +19,5 @@ Probe revision 7 identifies the fixed bootstrap stage without exposing host diag
 Probe revision 8 verifies metadata access from the digest-pinned runner agent.
 
 Probe revision 9 verifies explicit trusted handoff into the runner agent.
+
+Probe revision 10 verifies execution of the verified locally-loaded agent image.
