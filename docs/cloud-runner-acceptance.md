@@ -15,3 +15,5 @@ Probe revision 5 verifies that scoped VM metadata retains the bootstrap script.
 Probe revision 6 records a redacted bootstrap failure signal if the agent cannot start.
 
 Probe revision 7 identifies the fixed bootstrap stage without exposing host diagnostics.
+
+Probe revision 8 verifies metadata access from the digest-pinned runner agent.
