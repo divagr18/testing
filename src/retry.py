@@ -3,6 +3,7 @@ from collections.abc import Callable
 
 def retry_summary(attempts: int, outcome: str) -> str:
     """Return a stable, human-readable retry event for observability."""
+    # The stable field order makes downstream log parsing deterministic.
     if attempts < 1:
         raise ValueError("attempts must be positive")
     return f"retry attempts={attempts} outcome={outcome}"
