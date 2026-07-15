@@ -9,3 +9,5 @@ Probe revision 2 records keyless signed-artifact dispatch validation.
 Probe revision 3 records the Compute provider diagnostic.
 
 Probe revision 4 verifies the explicit Compute insert request.
+
+Probe revision 5 verifies that scoped VM metadata retains the bootstrap script.
