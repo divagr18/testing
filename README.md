@@ -3,3 +3,5 @@
 A deliberately small dependency-free repository used to exercise Pull Guard's
 webhook ingestion, deterministic clustering, isolated runner, and evidence
 paths. Each pull request is independent and should remain open for triage.
+
+This change is a production end-to-end runner validation marker.
