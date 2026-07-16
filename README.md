@@ -5,3 +5,5 @@ webhook ingestion, deterministic clustering, isolated runner, and evidence
 paths. Each pull request is independent and should remain open for triage.
 
 This change is a production end-to-end runner validation marker.
+
+This follow-up marker validates the signed immutable result upload.
