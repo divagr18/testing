@@ -2,5 +2,8 @@ from collections.abc import Callable
 
 
 def retry_once(operation: Callable[[], object]) -> object:
-    """Run one operation without retrying it yet."""
-    return operation()
+    """Retry a transient timeout once, then return the second result."""
+    try:
+        return operation()
+    except TimeoutError:
+        return operation()
