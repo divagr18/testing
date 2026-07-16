@@ -7,6 +7,19 @@ class RetryTests(unittest.TestCase):
     def test_returns_the_operation_value(self):
         self.assertEqual(retry_once(lambda: "ok"), "ok")
 
+    def test_retries_a_transient_timeout_once(self):
+        calls = 0
+
+        def operation():
+            nonlocal calls
+            calls += 1
+            if calls == 1:
+                raise TimeoutError("temporary")
+            return "ok"
+
+        self.assertEqual(retry_once(operation), "ok")
+        self.assertEqual(calls, 2)
+
 
 if __name__ == "__main__":
     unittest.main()
