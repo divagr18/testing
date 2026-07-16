@@ -2,5 +2,8 @@ from collections.abc import Callable
 
 
 def retry_once(operation: Callable[[], object]) -> object:
-    """Run one operation without retrying it yet."""
-    return operation()
+    """Retry a transient runtime failure exactly once."""
+    try:
+        return operation()
+    except RuntimeError:
+        return operation()
