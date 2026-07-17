@@ -1,3 +1,9 @@
-def describe_retry_failure(error: Exception) -> str:
-    """Make a retry failure easier to spot in logs."""
-    return f"retry failed: {error}"
+def describe_retry_failure(operation: str, attempts: int, error: Exception) -> dict[str, object]:
+    """Return a compact, structured account of a retry failure for callers to log."""
+    return {
+        "operation": operation,
+        "attempts": attempts,
+        "error_type": type(error).__name__,
+        "message": str(error),
+        "retryable": True,
+    }
