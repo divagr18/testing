@@ -7,5 +7,5 @@ def retry_once(operation: Callable[[], object]) -> object:
 
 
 def timeout_error_name(error: BaseException) -> str:
-    """Return the concrete error type name for retry diagnostics."""
+    """Return the concrete timeout error type name for retry diagnostics."""
     return type(error).__name__
