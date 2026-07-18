@@ -2,5 +2,11 @@ from collections.abc import Callable
 
 
 def retry_once(operation: Callable[[], object]) -> object:
-    """Run one operation without retrying it yet."""
-    return operation()
+    """Make at most two attempts for a transient timeout."""
+    for attempt in range(2):
+        try:
+            return operation()
+        except TimeoutError:
+            if attempt:
+                raise
+    raise RuntimeError("unreachable")
