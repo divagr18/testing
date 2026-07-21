@@ -14,3 +14,11 @@ class DashboardTests(unittest.TestCase):
 
     def test_exposes_badge_counts_for_each_column(self):
         self.assertEqual(column_totals([Task(1, "A", "doing")])["doing"], 1)
+
+    def test_can_limit_visible_tasks_without_changing_order(self):
+        groups = group_by_status([Task(1, "A"), Task(2, "B")], limit=1)
+        self.assertEqual([task.id for task in groups["todo"]], [1])
+
+    def test_rejects_an_empty_dashboard_limit(self):
+        with self.assertRaises(ValueError):
+            group_by_status([], limit=0)
