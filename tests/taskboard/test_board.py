@@ -21,6 +21,15 @@ class BoardTests(unittest.TestCase):
 
         self.assertEqual(board.move(task.id, "done").status, "done")
 
+    def test_rejects_unknown_workflow_values(self):
+        board = Board()
+        task = board.add("Review queue")
+
+        with self.assertRaises(ValueError):
+            board.add("Invalid priority", priority="urgent")
+        with self.assertRaises(ValueError):
+            board.move(task.id, "blocked")
+
     def test_missing_task_is_explicit(self):
         with self.assertRaises(TaskNotFoundError):
             Board().get(99)

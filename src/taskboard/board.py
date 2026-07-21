@@ -28,6 +28,8 @@ class Board:
         title = title.strip()
         if not title:
             raise ValueError("A task title is required.")
+        if priority not in {"low", "normal", "high"}:
+            raise ValueError("Priority must be low, normal, or high.")
         task = Task(id=self._next_id, title=title, priority=priority)
         self._tasks[task.id] = task
         self._next_id += 1
@@ -46,6 +48,8 @@ class Board:
         return tasks
 
     def move(self, task_id: int, status: str) -> Task:
+        if status not in {"todo", "doing", "done"}:
+            raise ValueError("Status must be todo, doing, or done.")
         task = self.get(task_id)
         updated = replace(task, status=status)
         self._tasks[task_id] = updated
