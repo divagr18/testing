@@ -1,6 +1,6 @@
 import unittest
 from src.taskboard import Task
-from src.taskboard.dashboard import group_by_status
+from src.taskboard.dashboard import column_totals, group_by_status
 
 
 class DashboardTests(unittest.TestCase):
@@ -11,3 +11,6 @@ class DashboardTests(unittest.TestCase):
     def test_orders_each_column_by_priority(self):
         groups = group_by_status([Task(1, "A", priority="low"), Task(2, "B", priority="high")])
         self.assertEqual([task.id for task in groups["todo"]], [2, 1])
+
+    def test_exposes_badge_counts_for_each_column(self):
+        self.assertEqual(column_totals([Task(1, "A", "doing")])["doing"], 1)

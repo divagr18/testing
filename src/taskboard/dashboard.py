@@ -8,3 +8,8 @@ def group_by_status(tasks: list[Task]) -> dict[str, list[Task]]:
     for task in tasks:
         groups[task.status].append(task)
     return {status: by_priority(items) for status, items in groups.items()}
+
+
+def column_totals(tasks: list[Task]) -> dict[str, int]:
+    """Return a compact badge count for each workflow column."""
+    return {status: len(items) for status, items in group_by_status(tasks).items()}
